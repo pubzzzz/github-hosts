@@ -1,6 +1,6 @@
 @echo off
 SET script_dir=%~dp0
-cd /d %script_dir%
+cd /d %script_dir%\fetch_ip_for_host\
 
 where python
 IF %ERRORLEVEL% NEQ 0 (
