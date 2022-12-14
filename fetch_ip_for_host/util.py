@@ -11,7 +11,7 @@ def accessIpRootPathWebNanoSeconds(ipJ:str,sleepSeconds:float=0.1)->int:
         time.sleep(sleepSeconds)
     begin:int=time.time_ns()
     url:str=f"http://{ipJ}"
-    print(f"request {url}")
+    print(f"request {url},",end="")
     try:
         __response:requests.models.Response=requests.get(url=url,timeout=7)
     except (requests.exceptions.ReadTimeout,requests.exceptions.ConnectionError) as e:
@@ -24,7 +24,7 @@ def accessIpRootPathWebNanoSeconds(ipJ:str,sleepSeconds:float=0.1)->int:
 
     end:int=time.time_ns()
     delta_ns:int=end-begin
-    print(f"debug:{delta_ns}ns,{delta_ns/_1S_AS_NS}s")
+    print(f"cost:{delta_ns/_1S_AS_NS}s")
     return delta_ns
 
 

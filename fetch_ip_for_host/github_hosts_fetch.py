@@ -1,7 +1,7 @@
 from typing import List
 
 from get_from_www_ipaddress_com import fetchIpFrom__www_ipaddress_com
-from util import accessIpRootPathWebNanoSeconds, findMiniValueWithIdx, replaceOsHostFile
+from util import accessIpRootPathWebNanoSeconds, findMiniValueWithIdx, replaceOsHostFile, _1S_AS_NS
 
 
 #https://www.ipaddress.com/site/github.global.ssl.fastly.net
@@ -16,7 +16,7 @@ def findFastIp_in_IpListForHostK(k, hostK, _ipKLs)->str:
             print(f"try find fast ip : {hostK}, {_ipKLs}")
             ns_ls:List[int]=[accessIpRootPathWebNanoSeconds(ipJ) for j,ipJ in enumerate(ipKLs)]
             j,_ns= findMiniValueWithIdx(ns_ls)
-            print(f"{hostK}:fast ip is :in idx {j},{ipKLs[j]},{_ns/(10^6)}ms")
+            print(f"{hostK}:fast ip is :in idx {j},{ipKLs[j]},{_ns/_1S_AS_NS:.2f}s")
             return f"{ipKLs[j]}  {hostK}  #{' '.join([*ipKLs[0:j], *ipKLs[j+1:]])}"
         else: # len(ipKLs) == 1
             return f"{ipKLs[0]}  {hostK}   "
