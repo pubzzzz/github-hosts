@@ -24,18 +24,17 @@ def accessIpRootPathWebNanoSeconds(ipJ:str,sleepSeconds:float=0.1)->int:
 
     end:int=time.time_ns()
     delta_ns:int=end-begin
-    print(f"cost:{delta_ns/_1S_AS_NS}s")
+    print(f"cost:{delta_ns/_1S_AS_NS:.2f}s")
     return delta_ns
 
 
 def findMiniValueWithIdx(ls:List[Any])->Tuple[int,Any]:
     assert ls is not None and len(ls)>0
-    minIdx,min=0,ls[0]
+    minIdx=0
     for k,eleK in enumerate(ls):
-        if min>eleK:
+        if ls[minIdx]>eleK:
             minIdx=k
-    assert minIdx is not None
-    return minIdx,min
+    return minIdx,ls[minIdx]
 
 OS_HOSTS_PATH_FOR_WINDOWS="c:/Windows/System32/drivers/etc/hosts"
 # OS_HOSTS_PATH_FOR_WINDOWS="e:/tmp/hosts"  #only for develop

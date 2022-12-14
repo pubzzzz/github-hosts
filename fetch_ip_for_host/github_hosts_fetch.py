@@ -11,6 +11,7 @@ from util import accessIpRootPathWebNanoSeconds, findMiniValueWithIdx, replaceOs
 
 def findFastIp_in_IpListForHostK(k, hostK, _ipKLs)->str:
     ipKLs=list(filter(lambda i:":" not in i,_ipKLs))  #clear ipv6 address
+    # ipKLs=_ipKLs
     if ipKLs is not None and len(ipKLs)>0:
         if len(ipKLs) > 1:
             print(f"try find fast ip : {hostK}, {_ipKLs}")
